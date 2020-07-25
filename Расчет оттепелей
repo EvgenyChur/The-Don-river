@@ -3,8 +3,9 @@
 Created on Mon Aug 20 15:50:35 2018
 
 @author: Evgenii Churiulin
-Программа для работы с метеорологическими данными, полученными из SYNOP кода с помощью скрипта (все данные в 1 файле) на tornado 
-Программа осуществляет расчет среднесуточных значений метеорологических параметров
+Данный скрипт предназначен для выполнениния нескольких задач:
+1) Коррекция метеорологических данных, полученных в ходе работы с базой данных ФГБУ "Гидрометцентр России". Данная задача возникла из-за наличия грубых ошибок в исходных данных.
+
 
 
 """
@@ -14,36 +15,14 @@ import datetime
 import numpy as np
 from pandas.tseries.offsets import DateOffset
 import logging
+
+
 """
 #Версия для работы по одной станции
 fileName = '26825.csv'
 iPath = 'D:/Churyulin/msu_cosmo/Data_Natalia_Leonidovna/Data/{}'.format(fileName)
 """
 
-"""
-# Коррекция данных о высоте метеостанции
-def height_correction (height, max_height, min_height):
-    
-#    for height_st, a in enumerate(height):
-    if a > max_height:
-        height[height_st] = height[height_st - 1]
-    if a < min_height:                                                           
-        height[height_st] = height[height_st - 1]
-
-# Коррекция данных по атмосферному давлению
-def air_pressure_correction(ps, max_ps, min_ps):
-    # ps_st - счетчик
-    # b - счетчик
-    # ps - ряд данных
-    # max_ps - максимальное пороговое значение
-    # min_ps - минимальное пороговое значение 
-    
-    for ps_st, b in enumerate(ps):
-        if b > max_ps:                                                         
-            ps[ps_st] = (ps[ps_st+1]+ps[ps_st-1])/2
-        elif b < min_ps:   
-            ps[ps_st] = (ps[ps_st+1]+ps[ps_st-1])/2
-"""
 
 #Путь к папке, где хранится проект с рекой Дон
 
